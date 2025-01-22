@@ -20,7 +20,13 @@ public class 多线程 {
         @Override
         public void run(){
             Thread t = Thread.currentThread();
-            System.out.println("订单"+name+"正在处理中");
+            try {
+                System.out.println("订单"+name+"正在处理中");
+                Thread.sleep(2000);
+                System.out.println("订单"+name+"处理完成");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
